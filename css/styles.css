@@ -31,6 +31,13 @@ body {
 .text-field {
     margin: 10px;
     font-size: 24px;
+    text-align: center;
+    background-color: #d5ffef;
+}
+
+.calc-text-field {
+    margin: 10px;
+    font-size: 24px;
     text-align: right;
     background-color: #d5ffef;
 }
@@ -48,7 +55,6 @@ div {
 
     margin-bottom: 20px;
     margin-top: 20px;
-
 }
 
 .calcFrame {
@@ -94,16 +100,14 @@ div {
 
 .btnCalc-act:hover {
     background-color: #fff4a2;
-
 }
-.btnCalc:active
-{
+
+.btnCalc:active {
     background-color: rgba(255, 146, 144, 0.54);
     color: #ffffff;
 }
 
-.btnCalc-act:active
-{
+.btnCalc-act:active {
     background-color: rgba(255, 146, 144, 0.54);
     color: #ffffff;
 }

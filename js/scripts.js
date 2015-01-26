@@ -42,7 +42,5 @@ function canvasR() {
             context.fillRect(0, 0, 150, 100);
 
         }
-
     }
-
 }
