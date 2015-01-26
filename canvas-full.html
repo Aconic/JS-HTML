@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Canvas Full</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body onload="init()">
+<div class="header"><a href="index.html"> [Меню] </a> <strong> > | Canvas Class 3 | </strong></div>
+<div align="center">
+    <canvas id="c1" width="500" height="300" style="border: 2px solid #00c0cf"></canvas>
+    </br>
+    <input type="button" id="btnColor" value="Color" onclick="changeColor('rgb(0,86,166)')")>
+    <input type="button" id="btnWeight1" value="1" onclick="changeLineWeight(1)">
+    <input type="button" id="btnWeight5" value="4" onclick="changeLineWeight(4)">
+    <input type="button" id="btnWeight7" value="7" onclick="changeLineWeight(7)">
+    <input type="button" id="btnClear" value="Clear" onclick="clearCanvas()">
+</div>
+<script>
+    var ctx;
+    var startDraw;
+    var c1;
+    var size;
+    function init() {
+        c1 = document.getElementById("c1");
+        ctx = c1.getContext("2d");
+        startDraw = false;
+        c1.addEventListener('mousemove', mMove);
+        c1.addEventListener('mousedown', mDown);
+        c1.addEventListener('mouseup', mUp);
+        c1.addEventListener("onmouseout", mUp);
+
+    }
+
+    function drawFigure(e) {
+
+        ctx.strokeStyle = "#ff0000";
+        ctx.lineTo(e.x - c1.offsetLeft, e.y - c1.offsetTop);
+        ctx.stroke();
+
+
+    }
+    function mMove(e) {
+        if (startDraw) {
+            drawFigure(e);
+        }
+
+    }
+    function mDown() {
+        startDraw = true;
+        ctx.beginPath();
+        ctx.moveTo(e.x - c1.offsetLeft, e.y - c1.offsetTop);
+
+    }
+    function mUp() {
+        startDraw = false;
+
+    }
+
+    function changeColor(color) {
+        ctx.strokeStyle = color;
+
+    }
+
+    function changeLineWeight(w)
+    {
+        ctx.lineWidth=w;
+
+    }
+
+    function clearCanvas() {
+        ctx.clearRect(0, 0, c1.width, c1.height);
+
+    }
+
+</script>
+
+
+</body>
+</html>
