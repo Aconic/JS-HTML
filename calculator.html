@@ -6,16 +6,18 @@
     <link rel="stylesheet" href="css/styles.css">
     <script type="text/javascript" charset="utf-8" src="js/scripts.js"></script>
 </head>
-<body onload="calculation">
+<body>
 <div class="header"><a href="index.html"> [Меню] </a> <strong> > | Задание 6 | </strong></div>
 
 <div class="container" align="center">
     <div class="calcFrame">
 
-        <input class="calc-text-field" id="display"><br>
+        <input class="calc-text-field" type="text" id="display" value="0">
+
+        <input type="button" class="btnCalc" value="C" onclick="clearDisplay()"/>
+
 
         <br>
-
         <input type="button" class="btnCalc" value="7" id="btn7" onclick="setBtn('7')">
         <input type="button" class="btnCalc" value="8" id="btn8" onclick="setBtn('8')">
         <input type="button" class="btnCalc" value="9" id="btn9" onclick="setBtn('9')">
@@ -36,31 +38,56 @@
         <input type="button" class="btnCalc" value="0" id="btn0" onclick="setBtn('0')">
 
         <input type="button" class="btnCalc" value="=" id="equal" onclick="calculation()" style="width: 159px">
-        <input type="button" class="btnCalc-act" value="+" id="plus" >
+        <input type="button" class="btnCalc-act" value="+" id="plus">
+
     </div>
     <script>
         var firstVal;
         var secondVal;
         var operator;
         var res;
+        var flagNoOperator = true;
         var display = document.getElementById("display");
-        document.getElementById("plus").addEventListener("click", getOperator, false);
-        document.getElementById("minus").addEventListener("click", getOperator, false);
-        document.getElementById("divide").addEventListener("click", getOperator, false);
-        document.getElementById("multiply").addEventListener("click", getOperator, false);
+        /*  if(document.getElementById("plus").addEventListener)
+         {
+         document.getElementById("plus").addEventListener("click", getOperator);
+         }
+         else if (document.getElementById("plus").attachEvent)
+         {
+         document.getElementById("plus").attachEvent("onclick",getOperator);
+         }*/
+
+        document.getElementById("plus").addEventListener("click", getOperator);
+        document.getElementById("minus").addEventListener("click", getOperator);
+        document.getElementById("divide").addEventListener("click", getOperator);
+        document.getElementById("multiply").addEventListener("click", getOperator);
+
+
+        function clearDisplay() {
+            firstVal = 0;
+            secondVal = 0;
+            display.value = '0';
+        }
 
         function setBtn(n) {
+            if (display.value.indexOf('0') == 0) {
+                display.value = "";
+            }
             display.value += n;
         }
 
-        function getOperator() {
+        function getOperator(event) {
+            if (window.event) {
+                event = window.event;
+            }
             operator = event.target.value;
             firstVal = display.value;
-            display.value = "";
+            display.value = operator;
         }
         function calculation() {
-            secondVal = display.value;
 
+
+            secondVal = (display.value).substring(1);
             switch (operator) {
                 case '+':
                     display.value = parseFloat(firstVal) + parseFloat(secondVal);
@@ -84,7 +111,10 @@
                 default:
                     break;
             }
+            operator = "";
+            secondVal = 0;
         }
+
 
     </script>
 

@@ -40,12 +40,20 @@ body {
     font-size: 24px;
     text-align: right;
     background-color: #d5ffef;
+    width: 50%;
 }
 
 a {
     color: #ffffff;
     text-decoration: none;
 }
+#c1
+{
+    background-color: #ffffff;
+    display: inline-block;
+    margin-left: 600px;
+}
+
 
 div {
     align-content: center;
