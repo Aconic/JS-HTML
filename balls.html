@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body onload="init()">
+<div class="container">
+    <div class="header"><a href="index.html"> [Меню] </a> <strong> > | Задание 7 | </strong></div>
+
+    <canvas id="c1" width="500" height="300" style="border: 0px solid rgba(255, 241, 5, 0.08)"
+            onclick="start(event)"></canvas>
+</div>
+</div>
+</body>
+
+<script>
+
+    var canvas = document.getElementById("c1");
+    var ctx = canvas.getContext("2d");
+    var radius = 12;
+    var ball;
+    var balls = [];
+    var dx = 10;
+    var dy = 10;
+
+    function init() {
+        setInterval(draw, 100);
+    }
+    function start(e) {
+        var sx = e.pageX - canvas.offsetLeft;
+        var sy = e.pageY - canvas.offsetTop;
+        ball = new circle(sx, sy);
+        balls.push(ball);
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (var i = 0; i < balls.length; i++) {
+            balls[i].draw();
+        }
+        update();
+    }
+
+    function circle(mx, my) {
+
+        this.x = mx;
+        this.y = my;
+        this.dx = dx;
+        this.dy = dy;
+        var colors = ["Yellow", "Red", "Green", "Blue", "Cyan", "Orange", "Black", "Grey"];
+        var random = Math.floor(Math.random() * colors.length);
+
+        this.draw = function () {
+            ctx.fillStyle = colors[random];
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, radius, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.closePath();
+        }
+    }
+
+    function update() {
+        for (var i = 0; i < balls.length; i++) {
+
+            var ball = balls[i];
+            console.log("# " + i + " x: " + ball.x + "  y: " + ball.y + "  dx:" + dx)
+            if (ball.x > canvas.width - radius || ball.x - radius < 0) {
+                ball.dx = -ball.dx;
+            }
+            if (ball.y > canvas.height - radius || ball.y - radius < 0) {
+                ball.dy = -ball.dy;
+            }
+            ball.x += ball.dx;
+            ball.y += ball.dy;
+        }
+    }
+
+</script>
+
+</html>

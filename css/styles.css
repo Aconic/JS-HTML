@@ -3,9 +3,6 @@ body {
     margin: auto;
 }
 
-.container {
-
-}
 
 .header {
     background: rgba(179, 205, 207, 0.16);
@@ -40,12 +37,20 @@ body {
     font-size: 24px;
     text-align: right;
     background-color: #d5ffef;
+    width: 50%;
 }
 
 a {
     color: #ffffff;
     text-decoration: none;
 }
+#c1
+{
+    background-color: #ffffff;
+    display: inline-block;
+    margin-left: 30%;
+}
+
 
 div {
     align-content: center;
