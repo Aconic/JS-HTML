@@ -48,7 +48,11 @@ a {
 {
     background-color: #ffffff;
     display: inline-block;
+<<<<<<< HEAD
     margin-left: 30%;
+=======
+    margin-left: 600px;
+>>>>>>> 91452c2f680a436211f7a881d0242629bdbcac08
 }
 
 
